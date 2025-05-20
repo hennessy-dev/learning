@@ -1,0 +1,12 @@
+<input type="text" [(ngModel)]="cardData.title" (input)="onTitleChange($event)" />
+
+<div>
+
+  <img [src]="cardData.imageUrl" />
+  <h2> {{ cardData.title }} </h2>
+  <p> {{ cardData.description }} </p>
+
+  <button (click)="changeTitle()" > Reiniciar Titulo </button>
+
+
+</div>
