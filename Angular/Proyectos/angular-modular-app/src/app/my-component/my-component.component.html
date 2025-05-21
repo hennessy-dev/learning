@@ -1,0 +1,49 @@
+<div class="">
+  <button (click)="darMeGusta()" [ngClass]="{
+    'border-2 p-2 rounded-2xl border-blue-950 bg-blue-500 cursor-pointer' : true,
+    'border-red-600 bg-red-400' : !meGusta
+   }"> <ng-container *ngIf="meGusta">Me gusta</ng-container> <ng-container *ngIf="!meGusta">No me gusta</ng-container>  </button>
+</div>
+
+
+<div *ngIf="meGusta" >
+  <p>Ya diste me gusta</p>
+</div>
+
+<h2>
+  Lista de Productos
+</h2>
+
+<ul>
+  <li *ngFor="let producto of productos" >
+    {{ producto.id }} - {{ producto.nombre }} - {{ producto.precio }}
+  </li>
+</ul>
+
+<h2>Lista de Tareas</h2>
+
+<div>
+  <button (click)="cambiarEstado('pendiente')" class="button" > Pendiente </button>
+  <button (click)="cambiarEstado('en-progreso')" class="button" > En Progreso </button>
+  <button (click)="cambiarEstado('completada')" class="button" > Completada </button>
+</div>
+
+<div [ngSwitch]="estado" >
+
+  <div *ngSwitchCase="'pendiente'" >
+    <h3 class="text-red-500" >Tarea pendiente</h3>
+  </div>
+
+  <div *ngSwitchCase="'en-progreso'" >
+    <h3 class="text-red-500" >Tarea en progreso</h3>
+  </div>
+
+  <div *ngSwitchCase="'completada'" >
+    <h3 class="text-red-500" >Tarea completada</h3>
+  </div>
+
+  <div *ngSwitchDefault="" >
+    <h3 class="text-red-500" >Estado Invalido</h3>
+  </div>
+
+</div>

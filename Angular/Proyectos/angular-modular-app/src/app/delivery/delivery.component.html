@@ -1,0 +1,64 @@
+<div class="container flex flex-col pt-10">
+  <div class="column">
+    <mat-card class="card">
+      <mat-card-header class="card__title">
+        <mat-card-title>Formulario de Delivery</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="formGroup" (ngSubmit)="submitDelivery()" class="flex flex-row justify-around items-center">
+
+          <mat-form-field appearance="outline">
+            <mat-label>Fecha de Delivery</mat-label>
+            <input matInput type="date" formControlName="deliveryDate">
+            <mat-error *ngIf="deliveryDateField.invalid && deliveryDateField.touched">
+              La fecha de delivery es obligatoria.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Nombre del Cliente</mat-label>
+            <input matInput formControlName="customerName">
+            <mat-error *ngIf="customerNameField.invalid && customerNameField.touched">
+              El nombre del cliente es obligatorio.
+            </mat-error>
+          </mat-form-field>
+
+          <div formArrayName="items">
+            <div *ngFor="let item of itemsFormArray.controls; let i = index" [formGroupName]="i">
+              <app-delivery-item [formGroup]="item" (remove)="removeItem(i)"></app-delivery-item>
+              <hr>
+            </div>
+          </div>
+
+          <button mat-raised-button color="primary" type="button" (click)="addItem()">Agregar Item</button>
+          <button mat-raised-button color="primary" type="submit" [disabled]="!formGroup.valid">Guardar Delivery</button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+    </div>
+    <div class="column">
+
+     <!-- Agregar esta sección para mostrar los deliveries -->
+     <mat-card class="card">
+        <mat-card-header class="card__title">
+        <mat-card-title>Deliveries Registrados</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+        <ul>
+            <li *ngFor="let delivery of deliveries">
+            <h4>Fecha de Delivery: {{ delivery.deliveryDate }}</h4>
+            <p>Nombre del Cliente: {{ delivery.customerName }}</p>
+            <ul>
+                <li *ngFor="let item of delivery.items">
+                <p>Nombre del Ítem: {{ item.itemName }}</p>
+                <p>Cantidad: {{ item.quantity }}</p>
+                <p>Precio: {{ item.price }}</p>
+                </li>
+            </ul>
+            </li>
+        </ul>
+        </mat-card-content>
+    </mat-card>
+
+</div>
+</div>

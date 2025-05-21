@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, FormGroup,  } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, NonNullableFormBuilder, Validators,  } from '@angular/forms';
 
 @Component({
   selector: 'app-transfert-account',
@@ -11,20 +11,33 @@ import { FormBuilder, FormGroup,  } from '@angular/forms';
 
 export class TransfertAccountComponent {
 
-  private readonly formBuilder = inject(FormBuilder);
+  // private readonly formBuilder = inject(FormBuilder);
+  private readonly formBuilder = inject(NonNullableFormBuilder);
 
   beneficiaryInfoFormGroup: FormGroup = this.formBuilder.group({
-    beneficiaryName: [''],
-    beneficiaryAccountNumber: ['']
+    beneficiaryName: ['', Validators.required],
+    beneficiaryAccountNumber: ['', Validators.required]
   });
 
   formGroup = this.formBuilder.group({
     beneficiaryInfo: this.beneficiaryInfoFormGroup,
-    amount: [''],
+    amount: ['', Validators.required],
   })
 
   onSubmit() {
     console.log(this.formGroup.value);
+  }
+
+  get beneficiaryNameField(): FormControl<string> {
+    return this.formGroup.controls['beneficiaryInfo'].controls['beneficiaryName'].value as FormControl<string>;
+  }
+
+  get accountNumber() {
+    return this.formGroup.controls['beneficiaryInfo'].controls['beneficiaryAccountNumber'].value;
+  }
+
+  get amountField() {
+    return this.formGroup.controls.amount;
   }
 
 }

@@ -1,0 +1,64 @@
+.container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .column {
+    flex: 1; /* Hacer que cada columna ocupe el mismo espacio disponible */
+    margin: 0 10px; /* Agregar margen entre las columnas */
+  }
+  
+  .container .card {
+    width: 800px; /* Doble del ancho del formulario de transfer */
+    background-color: #ffffff; /* Fondo blanco */
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    margin-bottom: 20px; /* Espacio entre la tarjeta y los otros elementos */
+  }
+  
+  .container .card__title {
+    justify-content: center;
+    background-color: #37cb73; /* Rojo del Banco Interbank */
+    color: #fff; /* Texto blanco */
+    margin-bottom: 20px; /* Espacio entre el título y el formulario */
+  }
+  
+  .container .form {
+    margin-top: 1.5em;
+    display: flex;
+    flex-direction: column;
+    padding: 20px; /* Espacio interno */
+  }
+  
+  /* Ajustar espaciado en los bordes de las cajas de texto */
+  .container .form mat-form-field {
+    margin-bottom: 20px; /* Espacio entre cajas de texto */
+  }
+  
+  .left-column,
+  .right-column {
+    flex: 1; /* Ocupa el 50% del espacio disponible */
+    padding: 20px;
+    margin-left: 400px; /* Espacio entre la línea divisoria y el contenido */
+  }
+  
+  .right-column {
+    border-left: 1px solid #ddd; /* Línea divisoria entre las columnas */
+    margin-left: 0px; /* Espacio entre la línea divisoria y el contenido */
+    overflow-y: auto; /* Agregar scroll vertical si es necesario */
+  }
+  
+  .json-title {
+    font-size: 28px; /* Tamaño del título */
+    color: #333; /* Color del texto del título */
+    margin-bottom: 10px; /* Espacio entre el título y el contenido */
+  }
+  
+  .json-data {
+    font-family: monospace; /* Fuente de espaciado fijo */
+    font-size: 20px; /* Tamaño de fuente */
+    color: #666; /* Color del texto */
+    white-space: pre-wrap; /* Espacio en blanco preformateado con saltos de línea */
+  }

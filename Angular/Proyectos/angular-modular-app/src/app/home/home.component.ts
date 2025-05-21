@@ -6,6 +6,15 @@ import { Component } from '@angular/core';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
+
 export class HomeComponent {
+
+  ngOnInit(): void {
+    console.log('El componente HomeComponent se ha inicializado.');
+  }
+
+  ngOnDestroy(): void {
+    console.log('El componente HomeComponent se ha destruido.');
+  }
 
 }

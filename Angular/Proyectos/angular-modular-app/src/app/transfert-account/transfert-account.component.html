@@ -3,11 +3,20 @@
   <div class="flex flex-col gap-5 border-2 border-gray-300 rounded-lg p-5">
       <form [formGroup]="beneficiaryInfoFormGroup">
         <div class="mb-5">
-          <label
-            for="name"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >Nombre del beneficiario</label
-          >
+
+          @if( beneficiaryNameField.invalid && beneficiaryNameField.touched ) {
+            <label
+              for="name"
+              class="block mb-2 text-sm font-medium text-red-900 dark:text-white"
+              >El nombre del beneficiario es requerido y obligatorio *</label
+            >
+          } @else {
+            <label
+              for="name"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Nombre del beneficiario</label
+            >
+          }
           <input
             formControlName="beneficiaryName"
             type="text"

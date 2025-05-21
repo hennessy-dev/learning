@@ -12,6 +12,10 @@ import { CardDetailComponent } from './card/card-detail/card-detail.component';
 import { CalculatorModule } from './calculator/calculator.module';
 import { MaterialComponentsModule } from './material-components/material-components.module';
 import { TransfertAccountComponent } from './transfert-account/transfert-account.component';
+import { DeliveryComponent } from './delivery/delivery.component';
+import { DeliveryItemComponent } from './delivery/delivery-item/delivery-item.component';
+import { MyComponentComponent } from './my-component/my-component.component';
+import { PasswordStrengthDirective } from './password-strength.directive';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,11 @@ import { TransfertAccountComponent } from './transfert-account/transfert-account
     NavbarComponent,
     FooterComponent,
     CardDetailComponent,
-    TransfertAccountComponent
+    TransfertAccountComponent,
+    DeliveryComponent,
+    DeliveryItemComponent,
+    MyComponentComponent,
+    PasswordStrengthDirective
   ],
   imports: [
     BrowserModule,

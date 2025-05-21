@@ -50,12 +50,14 @@ Es un patron de diseño que retarda la carga o inicializacion de recursos en una
 
 Es una herramienta o estructura de control que posee Angular para manejar de forma dinamica y reactiva los Formularios, A diferencia de los formularios basados en plantillas, los formularios reactivos construyen el modelo del formulario en la clase del componente, lo que facilita las pruebas unitarias, la validación compleja y la manipulación dinámica.
 
+### Validaciones:
+
 **Funcionamiento breve:**
 
 1. **Definición del modelo:** Se construye el formulario en el componente usando`FormGroup` (para agrupar controles) y`FormControl` (para controles individuales), o`FormArray` (para colecciones de controles).
 2. **Vinculación en la plantilla:** Se enlaza el modelo reactivo con los elementos del formulario en la plantilla HTML usando`[formGroup]` o`[formControlName]`.
 3. **Observación de cambios:** Los formularios reactivos se basan en observables. Puedes suscribirte a los cambios de valor (`valueChanges`) o de estado (`statusChanges`) de cualquier control o grupo de controles para reaccionar a las interacciones del usuario.
-4. **Formularios anidados:** Los formularios anidados tienen la capacidad de asociarse a un modelo de formBuilder anidado dentro de un formulario padre, funcionaria de la siguiente manera: 
+4. **Formularios anidados:** Los formularios anidados tienen la capacidad de asociarse a un modelo de formBuilder anidado dentro de un formulario padre, funcionaria de la siguiente manera:
 
 Ejemplo:
 
@@ -175,4 +177,35 @@ export class ContactoComponent {
 }
 ```
 
-## 
+## Formularios Reactivos
+
+Los Formularios Reactivos en Angular son un enfoque de construcción de formularios que se basa en la reactividad y la inmutabilidad, utilizando Observables para gestionar los estados del formulario. Proporcionan una forma robusta y escalable de crear formularios complejos, ofreciendo mayor control y facilidad para realizar pruebas unitarias.
+
+### Características clave:
+
+- Inmutabilidad: El estado del formulario se actualiza en cada cambio, creando un nuevo estado en lugar de modificar el existente.
+- Control programático: Permiten construir el modelo del formulario directamente en la clase del componente (usando FormGroup, FormControl, FormArray).
+- Validación asíncrona y síncrona: Integración sencilla de validadores personalizados y asíncronos.
+- Facilidad de prueba: Al estar desacoplados del DOM, son más fáciles de testear.
+
+## Directivas
+
+Las Directivas son clases en Angular que añaden comportamiento adicional a los elementos en el DOM o modifican su apariencia y estructura. Son una parte fundamental de Angular que permite la reutilización de código y la manipulación declarativa del DOM.
+
+### Tipos de Directivas:
+
+- Directivas de Componente (@**Component**): Son las directivas más comunes. Incluyen una plantilla y un selector, y definen una vista.
+  Directivas de Atributo (@**Directive**): Modifican el comportamiento o la apariencia de un elemento del DOM al que se aplican. Ejemplos integrados: NgClass, NgStyle.
+  Directivas Estructurales (@**Directive**): Añaden, eliminan o manipulan elementos en el DOM cambiando su estructura. Ejemplos integrados: NgIf, NgFor, NgSwitch.
+
+### Directivas Personalizadas
+
+Las Directivas Personalizadas son directivas de atributo o estructurales que creamos nosotros para encapsular lógica o comportamiento específico que queremos reutilizar en múltiples partes de nuestra aplicación. Permiten extender el HTML con nuevas funcionalidades.
+
+1. Creación: Se definen como clases con el decorador @**Directive** y se les asigna un selector que se utilizará en el HTML.
+2. Funcionalidad: Pueden interactuar con el elemento del host (donde se aplican) a través de ElementRef y Renderer2, escuchar eventos del DOM con @**HostListener**, y reaccionar a cambios en las propiedades de entrada con @**Input **y @**HostBinding**.
+3. Uso: Una vez declaradas en un módulo, se pueden aplicar a cualquier elemento HTML utilizando su selector, al igual que las directivas integradas de Angular.
+
+## Pipes
+
+Son una característica que permite transformar y formatear datos directamente en las plantillas HTML de manera declarativa. Son ideales para tareas de presentación de datos, como formatear fechas, monedas, porcentajes o realizar operaciones de mayúsculas/minúsculas, sin necesidad de añadir lógica compleja en el componente.
