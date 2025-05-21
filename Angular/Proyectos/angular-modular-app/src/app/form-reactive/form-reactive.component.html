@@ -1,0 +1,14 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+  <label>Nombre</label>
+  <input type="text" formControlName="fullName">
+
+  <label>Usuario</label>
+  <input type="text" formControlName="userName">
+
+  <label>Correo</label>
+  <input type="text" formControlName="email">
+
+  <button type="submit" >Enviar</button>
+
+</form>

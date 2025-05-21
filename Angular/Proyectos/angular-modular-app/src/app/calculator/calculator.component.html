@@ -1,4 +1,4 @@
-<div class="flex flex-col justify-around items-center mt-20">
+<div class="flex flex-col justify-around items-center mb-20">
   <h2 class="font-bold">{{ title }}</h2>
 
   <div>
@@ -19,5 +19,9 @@
   </div>
 
   <br>
-  <!-- <p>Resultado: {{ result }} </p> -->
+
+  @if( result != 0 ) {
+    <p>Resultado: {{ result }} </p>
+  }
+
 </div>
