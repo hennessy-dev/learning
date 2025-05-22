@@ -327,3 +327,38 @@ Los Interceptores son una característica de Angular que permite interceptar y m
 - Uso: Comunes para añadir encabezados de autorización (tokens), mostrar spinners de carga, registrar errores, o manejar autenticación/refresco de tokens.
 - Implementación: Se crean como un servicio que implementa la interfaz HttpInterceptor y se registran en el providers de tu módulo usando HTTP_INTERCEPTORS.
 - Cadena de Responsabilidad: Múltiples interceptores pueden formar una cadena, procesando la petición secuencialmente.
+---
+# Nuevas Funcionalidades de Angular
+
+
+## Standalone Components
+
+Los Standalone Components (Componentes Independientes) son componentes que no necesitan ser declarados en un NgModule. Pueden ser importados y utilizados directamente en otros componentes, directivas o pipes standalone, o en módulos tradicionales.
+
+- Diferencia con Componentes Modulares:
+  - Modular: Requiere declarar el componente en la propiedad declarations de un @NgModule. Las dependencias (imports) también se gestionan a nivel de módulo.
+  - Standalone: El componente es autosuficiente. Las dependencias (imports, providers) se declaran directamente en el decorador @Component del propio componente.
+
+- Ventajas: Reduce el boilerplate de los módulos, simplifica la estructura del proyecto, mejora el tree-shaking (tamaño del bundle) y facilita la creación de aplicaciones más ligeras y modulares.
+---
+## Control Flow Syntax (@if, @for, @switch)
+
+La Control Flow Syntax es una nueva sintaxis de plantilla para manejar condicionales (@if), bucles (@for) y estructuras de switch (@switch) directamente en el HTML de Angular, reemplazando las directivas estructurales *ngIf, *ngFor, y *ngSwitch.
+
+- Sintaxis Declarativa: Más legible y cercana a JavaScript/TypeScript.
+- Rendimiento: Generalmente ofrece un mejor rendimiento y tree-shaking comparado con las directivas tradicionales.
+- @if: Para renderizado condicional. Incluye @else y @else if.
+- @for: Para iterar sobre colecciones. Incluye @empty (para colecciones vacías) y track (obligatorio para la optimización).
+- @switch: Para múltiples condiciones. Incluye @case y @default.
+- Compatibilidad: Coexiste con las directivas existentes, pero es la forma recomendada para nuevo código.
+---
+## Signals (Señales)
+
+Las Signals son un nuevo modelo de reactividad en Angular para la detección de cambios granular. Son valores que notifican a los consumidores (componentes, pipes, etc.) cuando cambian, permitiendo a Angular actualizar solo las partes del DOM que necesitan ser actualizadas.
+
+- Concepto: Un Signal envuelve un valor y te permite leerlo (.value) y escribirlo (.set(), .update(), .mutate()).
+- Reactividad: Cuando una señal cambia, cualquier computed (valor derivado) o efecto (como la actualización del DOM) que la "lee" se actualizará automáticamente.
+- Alternativa a RxJS (para estado): Son ideales para manejar el estado reactivo local del componente o global, complementando o, en algunos casos, reemplazando el uso de BehaviorSubject o ReplaySubject para el estado.
+- Integración con Detección de Cambios: Fundamental para el futuro de las aplicaciones "zoneless".
+- computed(): Para crear valores derivados que dependen de otras señales y se actualizan automáticamente.
+- effect(): Para crear efectos secundarios (ej. actualizar el DOM, sincronizar con localStorage) que se ejecutan cuando las señales que leen cambian.

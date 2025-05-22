@@ -1,0 +1,52 @@
+<ul>
+  <li><a [routerLink]="['/dashboard/categorias']">Categorias</a></li>
+  <li><a [routerLink]="['/dashboard/productos']">Productos</a></li>
+  <li><a [routerLink]="['/dashboard/tareas']">Tareas</a></li>
+  <li><a [routerLink]="['/preguntas']"></a></li>
+</ul>
+
+<h3>defer when</h3>
+
+<div>
+  <input
+    #checkboxDefer
+    type="checkbox"
+    [checked]="isCheckedDefer()"
+    (change)="isCheckedDefer.set(checkboxDefer.checked)"
+    id="checkboxDefer"
+  />
+  <label for=""></label>
+</div>
+
+@defer(when isCheckedDefer()){
+  <h1>valor de {{isCheckedDefer()}}</h1>
+} @placeholder {
+  <h1>Esto es un placeholder</h1>
+} @error {
+  <h1>Esto es un error</h1>
+} @loading {
+  <h1>Este es el loading</h1>
+}
+
+@defer(on timer(2s)){
+  <h1>valor de {{isCheckedDefer()}}</h1>
+} @placeholder {
+  <h1>Esto es un placeholder del timer</h1>
+} @error {
+  <h1>Esto es un error</h1>
+} @loading {
+  <h1>Este es el loading</h1>
+}
+
+@defer(on hover){
+  <h1>valor de {{isCheckedDefer()}}</h1>
+} @placeholder {
+  <h1>Esto es un placeholder del timer</h1>
+} @error {
+  <h1>Esto es un error</h1>
+} @loading {
+  <h1>Este es el loading</h1>
+}
+
+
+<router-outlet />
