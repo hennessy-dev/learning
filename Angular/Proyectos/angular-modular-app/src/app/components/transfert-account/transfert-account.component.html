@@ -1,0 +1,12 @@
+<div>
+  <p>Cargando...</p>
+</div>
+<div>
+  <h2></h2>
+  <ul>
+    <li *ngFor="let transferencia of transferencias">
+      Beneficiario: {{ transferencia.beneficiario }} - Monto: {{ transferencia.monto | currency: 'COP':'$' }}
+    </li>
+  </ul>
+  <a routerLink="/">Volver al Inicio</a>
+</div>

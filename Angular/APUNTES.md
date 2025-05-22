@@ -188,6 +188,8 @@ Los Formularios Reactivos en Angular son un enfoque de construcción de formular
 - Validación asíncrona y síncrona: Integración sencilla de validadores personalizados y asíncronos.
 - Facilidad de prueba: Al estar desacoplados del DOM, son más fáciles de testear.
 
+  ---
+
 ## Directivas
 
 Las Directivas son clases en Angular que añaden comportamiento adicional a los elementos en el DOM o modifican su apariencia y estructura. Son una parte fundamental de Angular que permite la reutilización de código y la manipulación declarativa del DOM.
@@ -206,6 +208,122 @@ Las Directivas Personalizadas son directivas de atributo o estructurales que cre
 2. Funcionalidad: Pueden interactuar con el elemento del host (donde se aplican) a través de ElementRef y Renderer2, escuchar eventos del DOM con @**HostListener**, y reaccionar a cambios en las propiedades de entrada con @**Input **y @**HostBinding**.
 3. Uso: Una vez declaradas en un módulo, se pueden aplicar a cualquier elemento HTML utilizando su selector, al igual que las directivas integradas de Angular.
 
+
+--- 
+
 ## Pipes
 
 Son una característica que permite transformar y formatear datos directamente en las plantillas HTML de manera declarativa. Son ideales para tareas de presentación de datos, como formatear fechas, monedas, porcentajes o realizar operaciones de mayúsculas/minúsculas, sin necesidad de añadir lógica compleja en el componente.
+
+### Pipes Personalizados 
+
+
+Para crear y personalizar un Pipe en Angular, sigue estos pasos:
+
+
+Para crear y personalizar un Pipe en Angular, sigue estos pasos:
+
+1. Generar el Pipe
+Usa Angular CLI:
+
+```bash
+  ng generate pipe nombre-del-pipe
+```
+
+2. Implementar PipeTransform
+El archivo nombre-del-pipe.pipe.ts contendrá:
+
+```typescript
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({
+  name: 'nombreDelPipe' // Nombre para usar en HTML
+})
+export class NombreDelPipe implements PipeTransform {
+  transform(value: any, ...args: any[]): any {
+    // Tu lógica de transformación aquí
+    return value;
+  }
+}
+```
+
+3. Personalizar la Lógica
+Modifica transform().
+
+Ejemplo: Convertir a mayúsculas y añadir prefijo.
+
+```typescript
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({ name: 'mayusculasPrefijo' })
+export class MayusculasPrefijoPipe implements PipeTransform {
+  transform(value: string, prefijo: string = ''): string {
+    return value ? prefijo + value.toUpperCase() : '';
+  }
+}
+```
+
+4. Usar en HTML
+
+```HTML
+<p>{{ 'hola' | mayusculasPrefijo }}</p>
+<p>{{ 'mundo' | mayusculasPrefijo:'TEXTO: ' }}</p>
+```
+
+---
+## Ciclos de Vida de Componentes
+
+Los ciclos de vida de los componentes son un conjunto de hooks que se ejecutan en las diferentes etapas del ciclo de renderización de un componente. Estos ciclos en Angular son:
+
+- ngOnChanges(): Se ejecuta cuando Angular detecta cambios en las propiedades de entrada (@Input) de un componente. Recibe un objeto SimpleChanges que contiene los valores actuales y previos de las propiedades que cambiaron.
+  
+- ngOnInit(): Se ejecuta una sola vez después de que Angular inicializa las propiedades de datos vinculadas por primera vez. Es ideal para la lógica de inicialización que no depende de los @Input del componente o cuando ya se han establecido.
+
+- ngDoCheck(): Se ejecuta inmediatamente después de ngOnChanges() y ngOnInit() en la primera detección de cambios, y luego en cada ciclo de detección de cambios posterior. Se utiliza para implementar tu propia lógica de detección de cambios personalizada o para reaccionar a cambios que Angular no detecta por sí mismo (como cambios dentro de objetos o arrays).
+
+- ngAfterContentInit(): Se ejecuta una sola vez después de que Angular ha inicializado el contenido proyectado (<ng-content>) en el componente. Es útil para interactuar con elementos que se insertan en el componente desde fuera.
+
+- ngAfterContentChecked(): Se ejecuta después de ngAfterContentInit() y después de cada ngDoCheck(). Se utiliza para responder a cualquier cambio en el contenido proyectado que Angular ha comprobado.
+  
+- ngAfterViewInit(): Se ejecuta una sola vez después de que Angular ha inicializado las vistas del componente y las vistas de sus componentes hijos. Es el lugar ideal para interactuar con elementos del DOM del componente o de sus hijos, por ejemplo, para acceder a un ViewChild.
+
+- ngAfterViewChecked(): Se ejecuta después de ngAfterViewInit() y después de cada ngAfterContentChecked(). Se utiliza para responder a cualquier cambio en las vistas del componente o de sus hijos que Angular ha comprobado.
+
+- ngOnDestroy(): Se ejecuta justo antes de que Angular destruya el componente. Es el lugar para realizar la limpieza, como anular suscripciones (unsubscribe), detener temporizadores, o desvincular event listeners para evitar fugas de memoria.
+
+---
+
+## Servicios (Services)
+
+Los Servicios en Angular son clases que encapsulan lógica de negocio, datos o funcionalidades que pueden ser compartidas entre diferentes componentes. Son un pilar fundamental para la reutilización de código y la separación de responsabilidades.
+
+- Decorador: @Injectable() los marca como disponibles para el sistema de inyección de dependencias de Angular.
+- Uso: Se inyectan en componentes u otros servicios usando el constructor.
+- Propósito: Proporcionar una fuente única de verdad para datos o funcionalidades transversales, como la gestión de autenticación o el acceso a APIs.
+
+--- 
+## Observables
+
+Los Observables son una técnica para manejar flujos asíncronos de datos en Angular, proporcionados por la librería RxJS. Son una alternativa poderosa a las Promesas para eventos que pueden ocurrir múltiples veces a lo largo del tiempo.
+
+- Concepto: Representan una colección de valores futuros o eventos.
+- Suscripción: Para consumir los datos emitidos por un Observable, debes suscribirte (.subscribe()) a él.
+- Desuscripción: Es crucial desuscribirse cuando el componente se destruye (ngOnDestroy) para evitar fugas de memoria.
+- Operadores RxJS: Ofrecen una rica colección de operadores (map, filter, debounceTime, switchMap, etc.) para transformar, combinar y manipular los flujos de datos.
+---
+## HttpClient
+
+El HttpClient es el módulo integrado de Angular para realizar peticiones HTTP (GET, POST, PUT, DELETE, etc.) a servidores remotos. Facilita la comunicación con APIs RESTful.
+
+- Módulo: Debes importarlo desde @angular/common/http en tu AppModule (o módulo relevante).
+- Retorno: Todos sus métodos (.get(), .post(), etc.) retornan Observables.
+- Manejo de Errores: Permite interceptar y manejar errores de red o del servidor.
+
+--- 
+## Interceptores (HTTP Interceptors)
+
+Los Interceptores son una característica de Angular que permite interceptar y modificar las peticiones HTTP salientes y las respuestas HTTP entrantes. Son ideales para aplicar lógica global a todas (o un subconjunto de) las peticiones.
+
+- Uso: Comunes para añadir encabezados de autorización (tokens), mostrar spinners de carga, registrar errores, o manejar autenticación/refresco de tokens.
+- Implementación: Se crean como un servicio que implementa la interfaz HttpInterceptor y se registran en el providers de tu módulo usando HTTP_INTERCEPTORS.
+- Cadena de Responsabilidad: Múltiples interceptores pueden formar una cadena, procesando la petición secuencialmente.

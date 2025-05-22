@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { initFlowbite } from 'flowbite';
+import { UserService } from './services/user.service';
+import { DataService } from './services/data.service';
 
 @Component({
   selector: 'app-root',
@@ -8,18 +10,37 @@ import { initFlowbite } from 'flowbite';
   styleUrl: './app.component.css'
 })
 
-export class AppComponent implements OnInit {
+export class AppComponent {
 
+  users: any[] = [];
   title = 'angular-modular-app';
 
-  result: number = 0;
+  constructor(private userService: UserService, private dataService: DataService) {}
 
-  getEventEmitter(e: number):void {
-    this.result = e;
+  ngOnInit() {
+    this.loadUsers();
   }
 
-  ngOnInit(): void {
-    initFlowbite();
+  loadUsers(): void {
+    this.userService.getUsers().subscribe({
+      next: users => {
+        this.users = users;
+        console.table(this.users);
+      },
+      error: error => {
+        console.error('Error al listar los usuarios:' + error)
+      }
+    });
+  }
+
+  getPostById(id: number): void {
+    this.dataService.getDataPostById(id).subscribe( post => {
+      console.log(post);
+    });
+  }
+
+  deleteUser(index: number) {
+    this.users.splice(index, 1);
   }
 
 
