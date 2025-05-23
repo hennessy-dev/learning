@@ -1,13 +1,13 @@
-<ul>
+<!-- <ul>
   <li><a [routerLink]="['/dashboard/categorias']">Categorias</a></li>
   <li><a [routerLink]="['/dashboard/productos']">Productos</a></li>
   <li><a [routerLink]="['/dashboard/tareas']">Tareas</a></li>
   <li><a [routerLink]="['/preguntas']"></a></li>
 </ul>
 
-<h3>defer when</h3>
+<h3>defer when</h3> -->
 
-<div>
+<!-- <div>
   <input
     #checkboxDefer
     type="checkbox"
@@ -16,9 +16,9 @@
     id="checkboxDefer"
   />
   <label for=""></label>
-</div>
+</div> -->
 
-@defer(when isCheckedDefer()){
+<!--@defer(when isCheckedDefer()){
   <h1>valor de {{isCheckedDefer()}}</h1>
 } @placeholder {
   <h1>Esto es un placeholder</h1>
@@ -46,7 +46,20 @@
   <h1>Esto es un error</h1>
 } @loading {
   <h1>Este es el loading</h1>
-}
+} -->
+
+<h1>Signals</h1>
+
+<p>{{ count() }}</p>
+
+<input type="text" #myName (input)="name.set(myName.value)">
+<h2>Name: {{ name() }}</h2>
+
+<p>
+  Computed Count
+  {{ doubleCount() }}
+</p>
+
 
 
 <router-outlet />
