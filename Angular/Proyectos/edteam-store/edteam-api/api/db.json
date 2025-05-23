@@ -1,0 +1,490 @@
+{
+  "accounts": [
+    {
+      "id": 1,
+      "accountNumber": "15345678",
+      "balance": 5000,
+      "customerId": 1
+    },
+    {
+      "id": 2,
+      "accountNumber": "13334678",
+      "balance": 3000,
+      "customerId": 1
+    }
+  ],
+  "customers": [
+    {
+      "id": 1,
+      "firstName": "Henry Antonio",
+      "lastName": "Mendoza Puerta",
+      "email": "hmendo81@gmail.com",
+      "password": "password123"
+    },
+    {
+      "id": 2,
+      "firstName": "Jane",
+      "lastName": "Doe",
+      "email": "jane@example.com",
+      "password": "secret"
+    },
+    {
+      "firstName": "maria mendez",
+      "lastName": "mendez maria",
+      "email": "hola@gmail.com",
+      "password": "HolaMundo",
+      "id": 3
+    },
+    {
+      "firstName": "Henry",
+      "lastName": "Mendoza Puerta",
+      "email": "hamp@gmail.com",
+      "password": "HolaMundo",
+      "id": 4
+    },
+    {
+      "firstName": "EDTeam",
+      "lastName": "EDTeam",
+      "email": "edteam@example.com",
+      "password": "password123",
+      "id": 5
+    },
+    {
+      "firstName": "edteam-2",
+      "lastName": "edteam-2",
+      "email": "edteam-2@gmail.com",
+      "password": "HolaMundo",
+      "id": 6
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Código Limpio: Manual de artesanía del software ágil",
+      "description": "Este libro te ayudará a aprender cómo escribir código limpio...",
+      "price": 29.99,
+      "image": "https://m.media-amazon.com/images/I/41SH-SvWPxL._SX218_BO1,204,203,200_QL40_FMwebp_.jpg",
+      "categoryId": 1
+    },
+    {
+      "id": 2,
+      "name": "El Programador Pragmático",
+      "description": "Tu camino hacia la maestría en programación comienza aquí...",
+      "price": 34.99,
+      "image": "https://m.media-amazon.com/images/I/41as+WafrFL._SX218_BO1,204,203,200_QL40_FMwebp_.jpg",
+      "categoryId": 1
+    },
+    {
+      "id": 3,
+      "name": "No sabes JS: Alcance y cierres",
+      "description": "Una inmersión profunda en cierres y alcances de JavaScript...",
+      "price": 19.99,
+      "image": "https://m.media-amazon.com/images/I/81kqrwS1nNL._AC_UY218_.jpg",
+      "categoryId": 3
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Principios de Programación"
+    },
+    {
+      "id": 2,
+      "name": "Patrones y Buenas Prácticas"
+    },
+    {
+      "id": 3,
+      "name": "JavaScript"
+    }
+  ],
+  "transactions": [
+    {
+      "id": 1,
+      "fromAccount": "15345678",
+      "toAccount": "13334678",
+      "amount": 500,
+      "date": "2024-06-16"
+    },
+    {
+      "id": 2,
+      "fromAccount": "4567898765",
+      "toAccount": "4567898769",
+      "amount": 1000,
+      "date": "2024-06-15"
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "customerId": 1,
+      "date": "2024-06-16",
+      "cartItems": [
+        {
+          "productId": 1,
+          "quantity": 2
+        }
+      ],
+      "total": 43.47
+    },
+    {
+      "id": 2,
+      "customerId": 1,
+      "date": "2024-06-17",
+      "cartItems": [
+        {
+          "productId": 1,
+          "quantity": 2
+        },
+        {
+          "productId": 2,
+          "quantity": 1
+        }
+      ],
+      "total": 43.47
+    },
+    {
+      "customerId": 1,
+      "date": "2024-06-17",
+      "cartItems": [
+        {
+          "productId": 1,
+          "quantity": 2
+        },
+        {
+          "productId": 2,
+          "quantity": 1
+        }
+      ],
+      "total": 43.47,
+      "id": 3
+    },
+    {
+      "customerId": 2,
+      "date": "2024-06-17",
+      "cartItems": [
+        {
+          "productId": 1,
+          "quantity": 2
+        },
+        {
+          "productId": 2,
+          "quantity": 4
+        }
+      ],
+      "total": 43.47,
+      "id": 4
+    },
+    {
+      "customerId": 1,
+      "date": "2024-06-18",
+      "cartItems": [
+        {
+          "productId": 2,
+          "quantity": 5
+        },
+        {
+          "productId": 4,
+          "quantity": 2
+        },
+        {
+          "productId": 3,
+          "quantity": 1
+        },
+        {
+          "productId": 1,
+          "quantity": 3
+        }
+      ],
+      "total": 43.47,
+      "id": 5
+    },
+    {
+      "customerId": 1,
+      "date": "2024-06-18",
+      "cartItems": [
+        {
+          "productId": 3,
+          "quantity": 5
+        },
+        {
+          "productId": 2,
+          "quantity": 2
+        },
+        {
+          "productId": 1,
+          "quantity": 1
+        }
+      ],
+      "total": 43.47,
+      "id": 6
+    },
+    {
+      "customerId": 1,
+      "date": "2024-06-18",
+      "cartItems": [
+        {
+          "productId": 2,
+          "quantity": 2
+        },
+        {
+          "productId": 1,
+          "quantity": 1
+        }
+      ],
+      "total": 43.47,
+      "id": 7
+    },
+    {
+      "customerId": 1,
+      "date": "2024-06-18",
+      "cartItems": [
+        {
+          "productId": 3,
+          "quantity": 6
+        }
+      ],
+      "total": 43.47,
+      "id": 8
+    },
+    {
+      "customerId": 2,
+      "date": "2024-06-18",
+      "cartItems": [
+        {
+          "productId": 3,
+          "quantity": 1
+        },
+        {
+          "productId": 4,
+          "quantity": 1
+        }
+      ],
+      "total": 43.47,
+      "id": 9
+    },
+    {
+      "customerId": 2,
+      "date": "2024-06-18",
+      "cartItems": [
+        {
+          "productId": 1,
+          "quantity": 1
+        },
+        {
+          "productId": 2,
+          "quantity": 1
+        }
+      ],
+      "id": 10
+    },
+    {
+      "customerId": 2,
+      "date": "2024-06-18",
+      "cartItems": [
+        {
+          "productId": 3,
+          "quantity": 1
+        },
+        {
+          "productId": 2,
+          "quantity": 1
+        }
+      ],
+      "id": 11
+    },
+    {
+      "customerId": 2,
+      "date": "2024-06-18",
+      "cartItems": [
+        {
+          "productId": 1,
+          "quantity": 1
+        },
+        {
+          "productId": 5,
+          "quantity": 1
+        }
+      ],
+      "total": 45.98,
+      "id": 12
+    },
+    {
+      "customerId": 2,
+      "date": "2024-06-18",
+      "cartItems": [
+        {
+          "productId": 1,
+          "quantity": 1
+        },
+        {
+          "productId": 2,
+          "quantity": 14
+        }
+      ],
+      "total": 381.98,
+      "id": 13
+    },
+    {
+      "customerId": 2,
+      "date": "2024-06-18",
+      "cartItems": [
+        {
+          "productId": 1,
+          "quantity": 2
+        }
+      ],
+      "total": 63.96,
+      "id": 14
+    },
+    {
+      "customerId": 1,
+      "date": "2024-06-18",
+      "cartItems": [
+        {
+          "productId": 3,
+          "quantity": 1
+        },
+        {
+          "productId": 1,
+          "quantity": 1
+        },
+        {
+          "productId": 2,
+          "quantity": 1
+        }
+      ],
+      "total": 48.49,
+      "id": 15
+    },
+    {
+      "customerId": 1,
+      "date": "2024-06-19",
+      "cartItems": [
+        {
+          "productId": 1,
+          "quantity": 1
+        },
+        {
+          "productId": 2,
+          "quantity": 1
+        }
+      ],
+      "total": 44.480000000000004,
+      "id": 16
+    },
+    {
+      "customerId": 1,
+      "date": "2024-06-19",
+      "cartItems": [
+        {
+          "productId": 1,
+          "quantity": 1
+        },
+        {
+          "productId": 2,
+          "quantity": 1
+        }
+      ],
+      "total": 28.490000000000002,
+      "id": 17
+    },
+    {
+      "customerId": 3,
+      "date": "2024-06-19",
+      "cartItems": [
+        {
+          "productId": 1,
+          "quantity": 1
+        },
+        {
+          "productId": 2,
+          "quantity": 2
+        }
+      ],
+      "total": 40.99,
+      "id": 18
+    },
+    {
+      "customerId": 4,
+      "date": "2024-06-19",
+      "cartItems": [
+        {
+          "productId": 2,
+          "quantity": 2
+        },
+        {
+          "productId": 3,
+          "quantity": 1
+        }
+      ],
+      "total": 179.94,
+      "id": 19
+    },
+    {
+      "customerId": 2,
+      "date": "2024-06-17",
+      "cartItems": [
+        {
+          "productId": 1,
+          "quantity": 2
+        },
+        {
+          "productId": 2,
+          "quantity": 4
+        }
+      ],
+      "id": 20
+    },
+    {
+      "customerId": 2,
+      "date": "2024-06-17",
+      "cartItems": [
+        {
+          "productId": 1,
+          "quantity": 2
+        },
+        {
+          "productId": 2,
+          "quantity": 4
+        }
+      ],
+      "id": 21
+    },
+    {
+      "customerId": 6,
+      "date": "2024-06-19",
+      "cartItems": [
+        {
+          "productId": 2,
+          "quantity": 2
+        },
+        {
+          "productId": 3,
+          "quantity": 1
+        }
+      ],
+      "total": 89.97,
+      "id": 22
+    },
+    {
+      "customerId": 6,
+      "date": "2024-06-19",
+      "cartItems": [
+        {
+          "productId": 1,
+          "quantity": 1
+        },
+        {
+          "productId": 2,
+          "quantity": 1
+        },
+        {
+          "productId": 3,
+          "quantity": 1
+        }
+      ],
+      "total": 84.97,
+      "id": 23
+    }
+  ]
+}

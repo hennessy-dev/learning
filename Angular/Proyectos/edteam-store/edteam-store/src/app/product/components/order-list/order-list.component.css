@@ -1,0 +1,51 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .top-bar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+  }
+  
+  .view-catalog-button, .view-orders-button {
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 4px;
+    text-transform: uppercase;
+  }
+  
+  .view-catalog-button:hover, .view-orders-button:hover {
+    background-color: #1976d2;
+    color: #fff;
+  }
+  
+  .view-catalog-button:focus, .view-orders-button:focus {
+    outline: none;
+  }
+  
+  .order-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .order-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  .order-info {
+    margin-bottom: 10px;
+  }
+  
+  .cart-items {
+    margin-bottom: 10px;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  

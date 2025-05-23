@@ -1,0 +1,10 @@
+{
+    "/api/v1/*": "/$1",
+    "/accounts/customers/:customerId": "/accounts?customerId=:customerId",
+    "/transactions/:id": "/transactions?id=:id",
+    "/products/categories/:categoryId": "/products?categoryId=:categoryId",
+    
+    "/orders/customers/:customerId": "/ordersByCustomer/:customerId", 
+    "/orders/:id": "/orders?id=:id"
+}
+  
