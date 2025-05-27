@@ -20,3 +20,17 @@ Son los encargados de manejar las solicitudes entrantes (HTTP en la mayoría de 
 Contienen la lógica de negocio principal de la aplicación. Son clases que encapsulan operaciones específicas y son "inyectadas" en los controladores (o en otros servicios) donde se necesitan. Su objetivo es desacoplar la lógica de negocio de la capa de presentación.
 
 - Patrón: Representan la capa de Lógica de Negocio (Business Logic) o Servicio (Service Layer). Se benefician enormemente de la Inversión de Control (Inversion of Control - IoC) a través de la inyección de dependencias, lo que facilita la prueba y el mantenimiento del código.
+---
+## Pipes:
+Los Pipes tienes dos usos tipicos, son transformadores de datos y validadores, se llaman dentro de la ruta de un Controlador y su proposito es recibir el dato de la peticion, parsearlo al tipo de dato especificado y validarlo, en caso de no ser posible el parseo arroja un error, estos son los pipes built-in que maneja NestJS: 
+
+- ValidationPipe
+- ParseIntPipe
+- ParseFloatPipe
+- ParseBoolPipe
+- ParseArrayPipe
+- ParseUUIDPipe
+- ParseEnumPipe
+- DefaultValuePipe
+- ParseFilePipe ??
+- ParseDatePipe

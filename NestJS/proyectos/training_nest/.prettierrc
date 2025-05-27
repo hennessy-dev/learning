@@ -9,5 +9,6 @@
   "semi": true,
   "proseWrap": "preserve",
   "htmlWhitespaceSensitivity": "ignore",
-
-}
+  "arrowParens": "always",
+  "bracketSameLine": false
+} 

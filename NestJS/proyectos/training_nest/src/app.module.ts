@@ -1,14 +1,29 @@
 import { Module } from '@nestjs/common';
-import { TasksModule } from './tasks/tasks.module';
-import { ProjectsModule } from './projects/projects.module';
-import { UsersModule } from './users/users.module';
-import { HelloController } from './hello/hello.controller';
-import { AuthController } from './auth/auth.controller';
-import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './modules/users/users.module';
+import { ConfigModule } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { CommentsModule } from './modules/comments/comments.module';
+import { CategoriesModule } from './modules/categories/categories.module';
+
+
 
 @Module({
-  imports: [TasksModule, ProjectsModule, UsersModule, AuthModule],
-  controllers: [HelloController, AuthController],
+  imports: [
+    ConfigModule.forRoot(),
+    TypeOrmModule.forRoot({
+      type: "postgres",
+      host: process.env.DATABASE_HOST, 
+      port: parseInt(process.env.DATABASE_PORT ?? "5432", 10),
+      password: process.env.DATABASE_PASSWORD,
+      username: process.env.DATABASE_USERNAME,
+      database: process.env.DATABASE_NAME,
+      autoLoadEntities: true,
+      synchronize: true
+    }),
+    UsersModule,
+    CommentsModule,
+    CategoriesModule],
+  controllers: [],
   providers: [],
 })
 export class AppModule {}
