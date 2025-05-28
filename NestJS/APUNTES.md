@@ -32,5 +32,8 @@ Los Pipes tienes dos usos tipicos, son transformadores de datos y validadores, s
 - ParseUUIDPipe
 - ParseEnumPipe
 - DefaultValuePipe
-- ParseFilePipe ??
+- ParseFilePipe 
 - ParseDatePipe
+---
+## 
+
