@@ -1,13 +1,15 @@
-import { Body, Controller, Get, HttpStatus, Param, ParseIntPipe, Patch, Post, Put} from '@nestjs/common';
+import { Body, Controller, Get, HttpStatus, Param, ParseIntPipe, Patch, Post, Put, UseGuards} from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDTO } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { AuthGuard } from '../auth/guard/auth.guard';
 
 @Controller('users')
 export class UsersController {
   constructor(private usersService: UsersService) {}
 
   @Get()
+  @UseGuards(AuthGuard)
   getAll() {
     return this.usersService.findAll();
   }

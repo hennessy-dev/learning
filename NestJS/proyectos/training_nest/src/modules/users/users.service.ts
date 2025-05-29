@@ -14,6 +14,7 @@ import { Repository } from 'typeorm';
 import { Profile } from './entities/profile.entity';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { ExceptionHandler } from 'winston';
+import { compare, hash } from 'bcryptjs';
 
 @Injectable()
 export class UsersService {
@@ -31,6 +32,26 @@ export class UsersService {
     return this.userRepository.find({});
   }
 
+  async authByUsername(username: string, password: string) {
+    const user = await this.userRepository.findOne({ 
+    where: {username}, 
+    select: ['id', 'username', 'password', 'email']
+    });
+
+    if(!user){
+      throw new NotFoundException(`El usuario con el nombre de usuario: ${username} no se encontro.`)
+    }
+
+    const isAuth = await this.passwordCompare(password, user.password);
+
+    if (!isAuth)
+    {
+      return new NotFoundException('Contraseña incorrecta');
+    }
+
+     return user;
+  }
+
   async findOne(id: number) {
     const user = await this.userRepository.findOne({
       where: { id },
@@ -45,19 +66,26 @@ export class UsersService {
     return user;
   }
 
+  async passwordHash(password: string): Promise<string> {
+    return hash(password, 10);
+  }
+
+  async passwordCompare (passwordPayload: string, passwordDatabase: string) {
+    return await compare(passwordPayload, passwordDatabase);
+  }
+
   async create(payload: CreateUserDTO): Promise<User | undefined | Error> {
     try {
       const newProfile = new Profile();
       newProfile.name = payload.name;
       newProfile.lastName = payload.lastName;
       newProfile.age = payload.age;
-      const profileCreated = await this.profileRepository.save(newProfile);
 
       const newUser = new User();
       newUser.email = payload.email;
-      newUser.password = payload.password;
+      newUser.password = await this.passwordHash(payload.password);
       newUser.username = payload.username;
-      newUser.profile = profileCreated;
+      newUser.profile = newProfile;
 
       // * NestJS Implementa el patrón repository para las transacciones
       // * con la base de datos, y a traves de los metodos del Repository<T> interactua con ella.
@@ -66,21 +94,9 @@ export class UsersService {
       return userCreated;
     } catch (error) {
       console.error(`Error en el servicio de creacion de usuario: ${error}`);
-      return new Error(`Error en el servicio de creacion de usuario: ${error}`);
+      return new Error(`Error en el servicio de creacion de usuario: ${error.message}`);
     }
   }
-
-  // async create(payload: CreateUserDTO){
-  //   const newUser = new User();
-
-  //   newUser.email = payload.email;
-  //   newUser.password = payload.password;
-  //   newUser.username = payload.username;
-
-  //   const userCreated = await this.userRepository.save(newUser);
-
-  //   return userCreated;
-  // }
 
   async getById(id: number): Promise<FakeStoreGetResponse> {
     try {

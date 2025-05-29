@@ -4,6 +4,7 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CommentsModule } from './modules/comments/comments.module';
 import { CategoriesModule } from './modules/categories/categories.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 
 
@@ -22,7 +23,8 @@ import { CategoriesModule } from './modules/categories/categories.module';
     }),
     UsersModule,
     CommentsModule,
-    CategoriesModule],
+    CategoriesModule,
+    AuthModule],
   controllers: [],
   providers: [],
 })
