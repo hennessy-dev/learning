@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { CommentsModule } from './modules/comments/comments.module';
 import { CategoriesModule } from './modules/categories/categories.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { ZoomModule } from './modules/zoom/zoom.module';
 
 
 
@@ -24,7 +25,8 @@ import { AuthModule } from './modules/auth/auth.module';
     UsersModule,
     CommentsModule,
     CategoriesModule,
-    AuthModule],
+    AuthModule,
+    ZoomModule],
   controllers: [],
   providers: [],
 })

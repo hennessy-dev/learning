@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>macOS API Login</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card" id="loginCard">
+            <h1 class="title">API Login</h1>
+            <div class="input-group">
+                <input type="text" id="username" class="input-field" placeholder="Username">
+            </div>
+            <div class="input-group">
+                <input type="password" id="password" class="input-field" placeholder="Password">
+            </div>
+            <button class="login-button" id="loginButton">Log In</button>
+            <p class="message" id="loginMessage"></p>
+        </div>
+
+        <div id="loggedInUsersSection" class="logged-in-users-section" style="display: none;">
+            <h2 class="section-title">Logged In Users</h2>
+            <table class="users-table">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Login Time</th>
+                    </tr>
+                </thead>
+                <tbody id="loggedInUsersTableBody">
+                    </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="main.js" defer ></script>
+</body>
+</html>

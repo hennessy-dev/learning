@@ -1,0 +1,145 @@
+body {
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    background: linear-gradient(135deg, #4CAF50, #1A237E); /* A simple gradient for background */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px; /* Add some padding for smaller screens */
+    box-sizing: border-box;
+    color: #fff; /* Default text color for the body */
+}
+
+.login-container {
+    perspective: 1000px; /* For 3D transformations */
+    width: 100%;
+    max-width: 500px;
+}
+
+.login-card {
+    background: rgba(255, 255, 255, 0.1); /* Frosted glass effect */
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative; /* For absolute positioning of elements */
+    overflow: hidden; /* Hide overflow from animations */
+    margin-bottom: 30px; /* Space between login card and user table */
+}
+
+.title {
+    font-size: 2.5em;
+    font-weight: 600;
+    color: #FFFFFF;
+    margin-bottom: 30px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-field {
+    width: calc(100% - 40px);
+    padding: 15px 20px;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #FFFFFF;
+    font-size: 1.1em;
+    outline: none;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    text-align: left; /* Align text inside input */
+    box-sizing: border-box; /* Ensure padding doesn't increase width */
+}
+
+.input-field::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.input-field:focus {
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.5);
+}
+
+.login-button {
+    background: #007AFF; /* macOS blue */
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 122, 255, 0.4);
+    width: 100%; /* Make the button full width */
+    box-sizing: border-box;
+}
+
+.login-button:hover {
+    background: #0056B3;
+    transform: translateY(-2px);
+}
+
+.login-button:active {
+    transform: translateY(0);
+}
+
+.message {
+    margin-top: 20px;
+    font-size: 1em;
+    font-weight: 500;
+    color: #FFFFFF; /* Default color, will be changed by JS */
+    min-height: 20px; /* Prevent layout shift */
+    transition: color 0.3s ease-in-out;
+    text-align: center;
+}
+
+.logged-in-users-section {
+    background: rgba(255, 255, 255, 0.1); /* Frosted glass effect */
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.section-title {
+    font-size: 2em;
+    font-weight: 600;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.users-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    color: #FFFFFF;
+}
+
+.users-table th, .users-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.users-table th {
+    font-weight: 500;
+}
+
+.users-table tbody tr:last-child td {
+    border-bottom: none;
+}
